@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IS 414 Study + Quiz</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>IS 414 Study + Quiz</h1>
+      <p>Minimal, focused prep with section-by-section review and quizzes.</p>
+    </header>
+
+    <main class="container">
+      <section id="landingView" class="card" aria-labelledby="planTitle">
+        <h2 id="planTitle">Recommended 60-Minute Study Schedule</h2>
+        <ol class="schedule-list">
+          <li><span>12 min</span> Risk / Assets / Threats / Vulnerabilities / Risk Response</li>
+          <li><span>12 min</span> Vulnerability Management &amp; System Hardening</li>
+          <li><span>12 min</span> Network Security</li>
+          <li><span>10 min</span> Social Engineering</li>
+          <li><span>8 min</span> Target Case + Home Depot Comparison</li>
+          <li><span>6 min</span> Final mixed review quiz</li>
+        </ol>
+        <button id="startStudyingBtn" class="primary">Start Studying</button>
+      </section>
+
+      <section id="appView" hidden>
+        <section class="card toolbar" aria-label="Study controls">
+          <div class="mode-toggle" role="radiogroup" aria-label="Learning mode">
+            <label>
+              <input type="radio" name="mode" value="study" />
+              Study mode
+            </label>
+            <label>
+              <input type="radio" name="mode" value="quiz" />
+              Quiz mode
+            </label>
+          </div>
+
+          <div class="timer-controls" aria-label="60-minute timer">
+            <h2>60-Minute Timer</h2>
+            <p id="timerDisplay" class="timer-display" aria-live="polite">60:00</p>
+            <div class="button-row">
+              <button id="timerStartBtn" type="button">Start</button>
+              <button id="timerPauseBtn" type="button">Pause</button>
+              <button id="timerResetBtn" type="button">Reset</button>
+            </div>
+            <p id="timerState" class="muted">Timer is paused.</p>
+          </div>
+
+          <div class="toolbar-actions">
+            <button id="resetProgressBtn" class="secondary" type="button">Reset all progress</button>
+          </div>
+        </section>
+
+        <section id="progressPanel" class="card" aria-labelledby="progressHeading">
+          <h2 id="progressHeading">Progress</h2>
+
+          <div class="progress-item">
+            <p>Reviewed sections</p>
+            <div class="progress-track" role="img" aria-label="Reviewed section progress">
+              <div id="reviewProgressBar" class="progress-fill"></div>
+            </div>
+            <p id="reviewProgressText" class="muted">0 / 5</p>
+          </div>
+
+          <div class="progress-item">
+            <p>Completed section quizzes</p>
+            <div class="progress-track" role="img" aria-label="Section quiz completion progress">
+              <div id="quizProgressBar" class="progress-fill"></div>
+            </div>
+            <p id="quizProgressText" class="muted">0 / 5</p>
+          </div>
+
+          <p id="overallScoreText">Overall score: 0 / 0</p>
+          <div id="sectionDots" class="section-dots" aria-label="Section status indicators"></div>
+        </section>
+
+        <section id="sectionsContainer" aria-live="polite"></section>
+
+        <section id="finalReviewPanel" class="card" aria-labelledby="finalReviewHeading">
+          <h2 id="finalReviewHeading">Final Review Mode</h2>
+          <p class="muted">Generate a mixed quiz pulled from all sections when you are ready.</p>
+          <div class="button-row">
+            <button id="startFinalQuizBtn" class="primary" type="button">Start Final Quiz</button>
+            <button id="retryFinalQuizBtn" class="secondary" type="button">Retry Final Quiz</button>
+          </div>
+          <div id="finalQuizContainer"></div>
+          <div id="finalSummary" aria-live="polite"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
