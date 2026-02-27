@@ -1,11 +1,13 @@
 const STORAGE_KEY = "is414-study-quiz-state-v1";
-const TIMER_SECONDS = 60 * 60;
 
 const STUDY_SECTIONS = [
   {
     id: "risk",
     title: "Risk / Assets / Threats / Vulnerabilities / Risk Response",
     time: "12 min",
+    slideFile: "https://byu.box.com/s/c3lo1mmpyrmev85245h7n3c9xysh85jf",
+    slideLabel: "Risk",
+    slideEmbedUrl: "",
     summary: [
       "Risk is the chance that a threat exploits a vulnerability and causes loss to an asset.",
       "Common formula: Risk = Likelihood x Impact (or probability x loss magnitude).",
@@ -28,11 +30,15 @@ const STUDY_SECTIONS = [
       },
       {
         id: "risk-q2",
-        type: "short",
-        prompt: "Write a common formula used to estimate risk.",
-        keywords: ["likelihood", "impact"],
-        minMatches: 2,
-        sampleAnswer: "Risk = Likelihood x Impact",
+        type: "mc",
+        prompt: "Which formula is commonly used to estimate risk?",
+        options: [
+          "Risk = Likelihood x Impact",
+          "Risk = Number of assets x Number of users",
+          "Risk = Asset value - Threat frequency",
+          "Risk = Controls + Compliance requirements",
+        ],
+        correctIndex: 0,
         explanation:
           "A standard estimate multiplies how likely an event is by how severe the impact would be.",
         topic: "Risk formulas",
@@ -54,12 +60,16 @@ const STUDY_SECTIONS = [
       },
       {
         id: "risk-q4",
-        type: "short",
+        type: "mc",
         prompt:
-          "Name one well-known source for vulnerability information used in risk assessment.",
-        keywords: ["nist", "nvd", "mitre", "cve", "cwe"],
-        minMatches: 1,
-        sampleAnswer: "NIST NVD or MITRE CVE/CWE",
+          "Which is a widely used source for vulnerability information in risk assessment?",
+        options: [
+          "NIST NVD and MITRE CVE/CWE",
+          "Only social media trend reports",
+          "Company cafeteria schedules",
+          "Website color accessibility checkers",
+        ],
+        correctIndex: 0,
         explanation:
           "Security teams commonly reference NVD and MITRE CVE/CWE for known vulnerabilities and weakness types.",
         topic: "Vulnerability intelligence sources",
@@ -82,12 +92,15 @@ const STUDY_SECTIONS = [
       },
       {
         id: "risk-q6",
-        type: "short",
-        prompt: "What is one practical step in asset identification?",
-        keywords: ["inventory", "classification", "owner", "criticality", "data map"],
-        minMatches: 1,
-        sampleAnswer:
-          "Build an asset inventory with owners and classifications.",
+        type: "mc",
+        prompt: "Which is a practical step in asset identification?",
+        options: [
+          "Create an asset inventory with owners and classifications",
+          "Disable monitoring to reduce alert fatigue",
+          "Skip systems that are not internet-facing",
+          "Track only hardware and ignore data assets",
+        ],
+        correctIndex: 0,
         explanation:
           "Strong asset identification starts with inventory, ownership assignment, and classification by business value.",
         topic: "Asset identification",
@@ -98,6 +111,9 @@ const STUDY_SECTIONS = [
     id: "vuln",
     title: "Vulnerability Management & System Hardening",
     time: "12 min",
+    slideFile: "https://byu.box.com/s/6oxbafkeuprllu4bxb7mnv6ffms7y57x",
+    slideLabel: "Vulnerability Management and Systems Hardening",
+    slideEmbedUrl: "",
     summary: [
       "Scanning finds open ports, services, and known weaknesses; Nmap is commonly used for network discovery.",
       "The cyber kill chain helps map attacker progress from reconnaissance through actions on objectives.",
@@ -109,12 +125,16 @@ const STUDY_SECTIONS = [
     questions: [
       {
         id: "vuln-q1",
-        type: "short",
+        type: "mc",
         prompt:
           "What is one thing Nmap scanning helps identify on a target system?",
-        keywords: ["open port", "service", "host", "version", "os"],
-        minMatches: 1,
-        sampleAnswer: "Open ports and running services.",
+        options: [
+          "Open ports and running services",
+          "Employee annual salary history",
+          "Cloud billing discount rates",
+          "Social media engagement metrics",
+        ],
+        correctIndex: 0,
         explanation:
           "Nmap is used to map hosts, ports, and services so teams can detect exposure and prioritize hardening.",
         topic: "Scanning purpose",
@@ -147,13 +167,16 @@ const STUDY_SECTIONS = [
       },
       {
         id: "vuln-q4",
-        type: "short",
+        type: "mc",
         prompt:
-          "Give one benefit and one drawback of full-drive encryption.",
-        keywords: ["data at rest", "stolen", "performance", "key", "recovery", "overhead"],
-        minMatches: 2,
-        sampleAnswer:
-          "Benefit: protects data at rest if a device is stolen. Drawback: key management/recovery complexity.",
+          "Which choice best states one benefit and one drawback of full-drive encryption?",
+        options: [
+          "Benefit: protects data at rest; Drawback: key management and recovery overhead",
+          "Benefit: eliminates phishing; Drawback: slower internet speed only",
+          "Benefit: removes need for backups; Drawback: none",
+          "Benefit: blocks all malware; Drawback: no remote access",
+        ],
+        correctIndex: 0,
         explanation:
           "Encryption reduces data exposure risk but introduces operational overhead around key handling and recovery.",
         topic: "Encryption tradeoffs",
@@ -175,12 +198,15 @@ const STUDY_SECTIONS = [
       },
       {
         id: "vuln-q6",
-        type: "short",
+        type: "mc",
         prompt: "What is one core goal of system hardening?",
-        keywords: ["attack surface", "least privilege", "disable", "secure configuration", "baseline"],
-        minMatches: 1,
-        sampleAnswer:
-          "Reduce attack surface by removing unnecessary services and enforcing secure baselines.",
+        options: [
+          "Reduce attack surface through secure configuration baselines",
+          "Increase default admin access for faster troubleshooting",
+          "Delay patching to avoid any operational change",
+          "Expose more services so monitoring has more data",
+        ],
+        correctIndex: 0,
         explanation:
           "Hardening aims to reduce exploitable weaknesses by tightening configuration and permissions.",
         topic: "Hardening goals",
@@ -191,6 +217,9 @@ const STUDY_SECTIONS = [
     id: "network",
     title: "Network Security",
     time: "12 min",
+    slideFile: "https://byu.box.com/s/pduhpowggwmav6nlfnw4uf98gip3c479",
+    slideLabel: "Network and Cloud Security",
+    slideEmbedUrl: "",
     summary: [
       "Firewalls enforce network policy by filtering traffic between trust boundaries.",
       "Stateful firewalls track connection state, unlike basic stateless packet filters.",
@@ -234,12 +263,15 @@ const STUDY_SECTIONS = [
       },
       {
         id: "network-q3",
-        type: "short",
+        type: "mc",
         prompt: "Type-1 vs Type-2 hypervisor: what is the key difference?",
-        keywords: ["bare metal", "host os", "direct hardware"],
-        minMatches: 2,
-        sampleAnswer:
-          "Type-1 runs directly on hardware; Type-2 runs on top of a host operating system.",
+        options: [
+          "Type-1 runs on bare metal; Type-2 runs on a host OS",
+          "Type-1 is only for containers; Type-2 is only for firewalls",
+          "Type-1 requires no hardware; Type-2 requires specialized chips",
+          "Type-1 and Type-2 are different names for the same architecture",
+        ],
+        correctIndex: 0,
         explanation:
           "The main difference is where the hypervisor sits in the stack: directly on hardware or above a host OS.",
         topic: "Hypervisor types",
@@ -272,12 +304,15 @@ const STUDY_SECTIONS = [
       },
       {
         id: "network-q6",
-        type: "short",
+        type: "mc",
         prompt: "How does an IPS differ from an IDS?",
-        keywords: ["block", "prevent", "detect", "alert", "inline"],
-        minMatches: 2,
-        sampleAnswer:
-          "IDS detects/alerts; IPS is inline and can actively block or prevent malicious traffic.",
+        options: [
+          "IDS detects and alerts; IPS can block traffic inline",
+          "IDS blocks inline; IPS only logs events",
+          "IDS and IPS only inspect encrypted backups",
+          "IDS and IPS are unrelated to network security",
+        ],
+        correctIndex: 0,
         explanation:
           "IDS focuses on detection visibility, while IPS adds active prevention.",
         topic: "IDS vs IPS",
@@ -288,6 +323,9 @@ const STUDY_SECTIONS = [
     id: "social",
     title: "Social Engineering",
     time: "10 min",
+    slideFile: "https://byu.box.com/s/9z2cdglqcbpi9f8zq91h08dhn1nl7v4c",
+    slideLabel: "Social Engineering",
+    slideEmbedUrl: "",
     summary: [
       "Social engineering manipulates people instead of directly exploiting technology.",
       "Common techniques include pretexting, impersonation, phishing/spearphishing/vishing, and elicitation.",
@@ -320,12 +358,15 @@ const STUDY_SECTIONS = [
       },
       {
         id: "social-q3",
-        type: "short",
+        type: "mc",
         prompt: "What is pretexting in social engineering?",
-        keywords: ["fabricated", "false scenario", "story", "trust", "information"],
-        minMatches: 2,
-        sampleAnswer:
-          "Pretexting is creating a believable false scenario to gain trust and extract information.",
+        options: [
+          "Creating a believable false scenario to gain trust and extract information",
+          "Blocking suspicious IP ranges with a firewall ACL",
+          "Encrypting all email attachments at rest",
+          "Installing antivirus signatures on a weekly schedule",
+        ],
+        correctIndex: 0,
         explanation:
           "Attackers use a crafted backstory (pretext) to appear legitimate and solicit sensitive details.",
         topic: "Pretexting",
@@ -347,11 +388,15 @@ const STUDY_SECTIONS = [
       },
       {
         id: "social-q5",
-        type: "short",
+        type: "mc",
         prompt: "What is vishing?",
-        keywords: ["voice", "phone", "call", "phishing"],
-        minMatches: 2,
-        sampleAnswer: "Vishing is phishing conducted by voice call (phone-based social engineering).",
+        options: [
+          "Phishing conducted over voice calls",
+          "A malware sample isolated in a sandbox",
+          "A denial-of-service attack using botnets",
+          "A password policy requiring 12+ characters",
+        ],
+        correctIndex: 0,
         explanation:
           "Vishing uses phone calls or voicemail to trick targets into sharing information or taking risky actions.",
         topic: "Vishing",
@@ -377,6 +422,9 @@ const STUDY_SECTIONS = [
     id: "target",
     title: "Target Case (and compare with Home Depot)",
     time: "8 min",
+    slideFile: "https://byu.box.com/s/edh132887xucr8swa0nd7lsk29py4vm6",
+    slideLabel: "Target Case",
+    slideEmbedUrl: "",
     summary: [
       "Target's breach involved third-party vendor access and POS malware deployment.",
       "After entry, attackers moved laterally and exfiltrated payment card data.",
@@ -403,12 +451,15 @@ const STUDY_SECTIONS = [
       },
       {
         id: "target-q2",
-        type: "short",
+        type: "mc",
         prompt: "What happened after initial entry into Target's environment?",
-        keywords: ["lateral", "pos malware", "exfiltration", "card data", "movement"],
-        minMatches: 2,
-        sampleAnswer:
-          "Attackers moved laterally, installed POS malware, and exfiltrated payment card data.",
+        options: [
+          "Attackers moved laterally, installed POS malware, and exfiltrated card data",
+          "The intrusion was immediately contained before any movement",
+          "Only internal email signatures were modified",
+          "The attacker disabled all network routing",
+        ],
+        correctIndex: 0,
         explanation:
           "After foothold access, attackers expanded reach and collected card data from compromised POS systems.",
         topic: "Post-compromise activity",
@@ -445,12 +496,15 @@ const STUDY_SECTIONS = [
       },
       {
         id: "target-q5",
-        type: "short",
+        type: "mc",
         prompt: "Name one lesson learned from Target that also applies broadly.",
-        keywords: ["vendor access", "segmentation", "monitoring", "least privilege", "incident response", "mfa"],
-        minMatches: 1,
-        sampleAnswer:
-          "Tighten third-party access and network segmentation, and improve alert response speed.",
+        options: [
+          "Strengthen third-party access controls, segmentation, and incident response",
+          "Disable logging to reduce storage costs",
+          "Use shared vendor admin accounts for convenience",
+          "Avoid patching POS systems during business quarters",
+        ],
+        correctIndex: 0,
         explanation:
           "Major lessons include stronger third-party governance, segmentation, and disciplined incident handling.",
         topic: "Lessons learned",
@@ -475,7 +529,6 @@ const STUDY_SECTIONS = [
 ];
 
 let state = loadState();
-let timerId = null;
 
 const dom = {};
 
@@ -493,21 +546,13 @@ function init() {
   dom.quizProgressText = document.getElementById("quizProgressText");
   dom.overallScoreText = document.getElementById("overallScoreText");
   dom.sectionDots = document.getElementById("sectionDots");
-  dom.timerDisplay = document.getElementById("timerDisplay");
-  dom.timerState = document.getElementById("timerState");
-  dom.timerStartBtn = document.getElementById("timerStartBtn");
-  dom.timerPauseBtn = document.getElementById("timerPauseBtn");
-  dom.timerResetBtn = document.getElementById("timerResetBtn");
   dom.startFinalQuizBtn = document.getElementById("startFinalQuizBtn");
   dom.retryFinalQuizBtn = document.getElementById("retryFinalQuizBtn");
   dom.finalQuizContainer = document.getElementById("finalQuizContainer");
   dom.finalSummary = document.getElementById("finalSummary");
-  dom.modeInputs = Array.from(document.querySelectorAll('input[name="mode"]'));
 
   bindEvents();
-  syncModeInputs();
   updateStudyVisibility();
-  updateTimerDisplay();
   render();
 }
 
@@ -518,24 +563,12 @@ function bindEvents() {
     updateStudyVisibility();
   });
 
-  dom.modeInputs.forEach((input) => {
-    input.addEventListener("change", (event) => {
-      state.mode = event.target.value;
-      saveState();
-      renderSections();
-    });
-  });
-
   dom.resetProgressBtn.addEventListener("click", () => {
-    const confirmed = window.confirm("Reset all study progress, quiz scores, and timer?");
+    const confirmed = window.confirm("Reset all study progress and quiz scores?");
     if (!confirmed) return;
-    clearInterval(timerId);
-    timerId = null;
     state = defaultState();
     localStorage.removeItem(STORAGE_KEY);
-    syncModeInputs();
     updateStudyVisibility();
-    updateTimerDisplay();
     render();
   });
 
@@ -565,10 +598,6 @@ function bindEvents() {
     submitSectionQuiz(sectionId, new FormData(form));
   });
 
-  dom.timerStartBtn.addEventListener("click", startTimer);
-  dom.timerPauseBtn.addEventListener("click", pauseTimer);
-  dom.timerResetBtn.addEventListener("click", resetTimer);
-
   dom.startFinalQuizBtn.addEventListener("click", generateFinalQuiz);
   dom.retryFinalQuizBtn.addEventListener("click", generateFinalQuiz);
 
@@ -595,7 +624,6 @@ function renderSections() {
   dom.sectionsContainer.innerHTML = STUDY_SECTIONS.map((section) => {
     const reviewed = Boolean(state.reviewed[section.id]);
     const scoreData = state.sectionScores[section.id];
-    const quizEnabled = state.mode === "quiz";
     const attempts = scoreData?.attempts || 0;
     const scoreLine = scoreData
       ? `Latest score: ${scoreData.score} / ${scoreData.total} (Attempts: ${attempts})`
@@ -617,32 +645,59 @@ function renderSections() {
         <ul class="summary-list">
           ${section.summary.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
         </ul>
+        ${renderSlidePanel(section)}
 
-        ${
-          quizEnabled
-            ? `
-              <div class="quiz-panel">
-                <h4>Section Quiz</h4>
-                <p class="quiz-status">${escapeHtml(scoreLine)}</p>
-                <form class="section-quiz-form" data-section-id="${section.id}">
-                  ${section.questions
-                    .map((question, index) => renderQuestionBlock(question, section.id, index + 1, "section"))
-                    .join("")}
-                  <div class="button-row">
-                    <button type="submit" class="primary">Submit section quiz</button>
-                    <button type="button" class="secondary" data-action="retry-section" data-section-id="${section.id}">
-                      Retry section quiz
-                    </button>
-                  </div>
-                </form>
-                ${scoreData ? renderFeedbackList(scoreData.feedback) : ""}
-              </div>
-            `
-            : `<p class="muted">Switch to Quiz mode to answer this section quiz.</p>`
-        }
+        <div class="quiz-panel">
+          <h4>Section Quiz</h4>
+          <p class="quiz-status">${escapeHtml(scoreLine)}</p>
+          <form class="section-quiz-form" data-section-id="${section.id}">
+            ${section.questions
+              .map((question, index) => renderQuestionBlock(question, section.id, index + 1, "section"))
+              .join("")}
+            <div class="button-row">
+              <button type="submit" class="primary">Submit section quiz</button>
+              <button type="button" class="secondary" data-action="retry-section" data-section-id="${section.id}">
+                Retry section quiz
+              </button>
+            </div>
+          </form>
+          ${scoreData ? renderFeedbackList(scoreData.feedback) : ""}
+        </div>
       </article>
     `;
   }).join("");
+}
+
+function renderSlidePanel(section) {
+  if (!section.slideFile && !section.slideEmbedUrl) return "";
+
+  if (section.slideEmbedUrl) {
+    return `
+      <section class="slide-panel" aria-label="Section slides">
+        <h4>Slide Review</h4>
+        <p class="muted">Review this deck before taking the section quiz.</p>
+        <iframe
+          class="slide-frame"
+          src="${escapeHtml(section.slideEmbedUrl)}"
+          title="${escapeHtml(section.title)} slide deck"
+          loading="lazy"
+        ></iframe>
+      </section>
+    `;
+  }
+
+  const href = section.slideFile ? encodeURI(section.slideFile) : "#";
+  return `
+    <section class="slide-panel" aria-label="Section slides">
+      <h4>Slide Review</h4>
+      <p class="muted">
+        Open the slide deck for this section before starting the quiz.
+      </p>
+      <p>
+        <a href="${escapeHtml(href)}" target="_blank" rel="noopener">Open ${escapeHtml(section.slideLabel || section.slideFile || "deck")}</a>
+      </p>
+    </section>
+  `;
 }
 
 function renderQuestionBlock(question, sectionId, number, scope) {
@@ -947,60 +1002,8 @@ function shuffleArray(items) {
   return copy;
 }
 
-function startTimer() {
-  if (timerId) return;
-  if (state.timerRemaining <= 0) {
-    state.timerRemaining = TIMER_SECONDS;
-  }
-
-  dom.timerState.textContent = "Timer is running.";
-  timerId = window.setInterval(() => {
-    state.timerRemaining -= 1;
-    if (state.timerRemaining <= 0) {
-      state.timerRemaining = 0;
-      pauseTimer();
-      dom.timerState.textContent = "Time is up.";
-    }
-    saveState();
-    updateTimerDisplay();
-  }, 1000);
-}
-
-function pauseTimer() {
-  if (timerId) {
-    clearInterval(timerId);
-    timerId = null;
-  }
-  dom.timerState.textContent = state.timerRemaining === 0 ? "Time is up." : "Timer is paused.";
-  saveState();
-  updateTimerDisplay();
-}
-
-function resetTimer() {
-  if (timerId) {
-    clearInterval(timerId);
-    timerId = null;
-  }
-  state.timerRemaining = TIMER_SECONDS;
-  dom.timerState.textContent = "Timer is paused.";
-  saveState();
-  updateTimerDisplay();
-}
-
-function updateTimerDisplay() {
-  const minutes = Math.floor(state.timerRemaining / 60);
-  const seconds = state.timerRemaining % 60;
-  dom.timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-}
-
 function makeFieldName(scope, sectionId, questionId) {
   return `${scope}_${sectionId}_${questionId}`;
-}
-
-function syncModeInputs() {
-  dom.modeInputs.forEach((input) => {
-    input.checked = input.value === state.mode;
-  });
 }
 
 function loadState() {
@@ -1016,10 +1019,6 @@ function loadState() {
       reviewed: { ...fallback.reviewed, ...(parsed.reviewed || {}) },
       sectionScores: parsed.sectionScores || {},
       finalQuiz: parsed.finalQuiz || null,
-      timerRemaining:
-        Number.isFinite(parsed.timerRemaining) && parsed.timerRemaining >= 0
-          ? parsed.timerRemaining
-          : TIMER_SECONDS,
     };
   } catch (error) {
     return fallback;
@@ -1033,10 +1032,8 @@ function saveState() {
 function defaultState() {
   return {
     started: false,
-    mode: "study",
     reviewed: {},
     sectionScores: {},
-    timerRemaining: TIMER_SECONDS,
     finalQuiz: null,
   };
 }

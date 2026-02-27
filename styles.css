@@ -77,28 +77,6 @@ p {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-.mode-toggle {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.mode-toggle label {
-  display: inline-flex;
-  gap: 0.45rem;
-  align-items: center;
-  padding: 0.45rem 0.65rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-}
-
-.timer-display {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
 .button-row {
   display: flex;
   flex-wrap: wrap;
@@ -215,6 +193,22 @@ input:focus-visible {
   padding-left: 1.1rem;
 }
 
+.slide-panel {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  background: #fafbfc;
+}
+
+.slide-frame {
+  width: 100%;
+  min-height: 360px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
 .quiz-panel {
   border-top: 1px solid var(--border);
   padding-top: 0.9rem;
@@ -301,7 +295,7 @@ input:focus-visible {
     padding: 1rem;
   }
 
-  .timer-display {
-    font-size: 1.7rem;
+  .slide-frame {
+    min-height: 280px;
   }
 }
