@@ -625,44 +625,52 @@ function renderSections() {
     const reviewed = Boolean(state.reviewed[section.id]);
     const scoreData = state.sectionScores[section.id];
     const attempts = scoreData?.attempts || 0;
+    const reviewStatus = reviewed ? "Reviewed" : "Not reviewed";
+    const quizStatus = scoreData ? `Quiz: ${scoreData.score}/${scoreData.total}` : "Quiz: not attempted";
     const scoreLine = scoreData
       ? `Latest score: ${scoreData.score} / ${scoreData.total} (Attempts: ${attempts})`
       : "No quiz attempt yet.";
 
     return `
       <article class="card section-card" id="section-${section.id}">
-        <div class="section-header">
-          <div>
-            <h3>${escapeHtml(section.title)}</h3>
-            <p class="section-meta">Recommended time: ${escapeHtml(section.time)}</p>
-          </div>
-          <label class="review-toggle">
-            <input type="checkbox" data-action="review-toggle" data-section-id="${section.id}" ${reviewed ? "checked" : ""} />
-            Mark as reviewed
-          </label>
-        </div>
+        <details class="section-accordion">
+          <summary class="section-summary-trigger">
+            <span class="section-summary-main">
+              <span class="section-summary-title">${escapeHtml(section.title)}</span>
+              <span class="section-meta">Recommended time: ${escapeHtml(section.time)}</span>
+            </span>
+            <span class="section-summary-stats">${escapeHtml(reviewStatus)} • ${escapeHtml(quizStatus)}</span>
+          </summary>
 
-        <ul class="summary-list">
-          ${section.summary.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
-        </ul>
-        ${renderSlidePanel(section)}
+          <div class="section-body">
+            <label class="review-toggle">
+              <input type="checkbox" data-action="review-toggle" data-section-id="${section.id}" ${reviewed ? "checked" : ""} />
+              Mark as reviewed
+            </label>
 
-        <div class="quiz-panel">
-          <h4>Section Quiz</h4>
-          <p class="quiz-status">${escapeHtml(scoreLine)}</p>
-          <form class="section-quiz-form" data-section-id="${section.id}">
-            ${section.questions
-              .map((question, index) => renderQuestionBlock(question, section.id, index + 1, "section"))
-              .join("")}
-            <div class="button-row">
-              <button type="submit" class="primary">Submit section quiz</button>
-              <button type="button" class="secondary" data-action="retry-section" data-section-id="${section.id}">
-                Retry section quiz
-              </button>
+            <ul class="summary-list">
+              ${section.summary.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
+            </ul>
+            ${renderSlidePanel(section)}
+
+            <div class="quiz-panel">
+              <h4>Section Quiz</h4>
+              <p class="quiz-status">${escapeHtml(scoreLine)}</p>
+              <form class="section-quiz-form" data-section-id="${section.id}">
+                ${section.questions
+                  .map((question, index) => renderQuestionBlock(question, section.id, index + 1, "section"))
+                  .join("")}
+                <div class="button-row">
+                  <button type="submit" class="primary">Submit section quiz</button>
+                  <button type="button" class="secondary" data-action="retry-section" data-section-id="${section.id}">
+                    Retry section quiz
+                  </button>
+                </div>
+              </form>
+              ${scoreData ? renderFeedbackList(scoreData.feedback) : ""}
             </div>
-          </form>
-          ${scoreData ? renderFeedbackList(scoreData.feedback) : ""}
-        </div>
+          </div>
+        </details>
       </article>
     `;
   }).join("");
